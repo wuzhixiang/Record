@@ -6,13 +6,15 @@
 
 
 
-#刚刚又遇到一个坑，
+
 #写dsl语句运行发现查不到东西
-curl -X GET http://127.0.0.1:9200/_search?pretty -d '''{"query": {"bool": {"must": [{"term": { "name": "'{320, 568}'" }}] } } }'''
-#以上是简化过的，没有任何结果
+from elasticsearch import Elasticsearch
+es = Elasticsearch(host, timeout=3600)
+es.search(indice,type, '''{"query": {"bool": {"must": [{"term": { "name": "'{320, 568}'" }}] } } }''')
+#dsl语句是简化过的，本来字段很长所以才怀疑是ignore_above，没有任何结果
 #然后怀疑是不是上面ignore_above的问题
 #于是开一个例子去尝试
 curl -X PUT http://127.0.0.1:9200/work_2017_07_25/itern/2 -d '''{"name": "'{320, 568}'"}'''
-#已简化，本来字段很长所以才怀疑
 #遇到错误Unexpected end-of-input in VALUE_STRING\n
 #原来是"'{320, 568}'"中的'{和外面多引号加其后的{貌似冲突了，具体原因不清楚
+#最后发现dsl语句中还是因为ignore_above的问题没能搜索到，但是cygwin里面确实因为冲突，果然还是linux开发比较好点
