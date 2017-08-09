@@ -1,0 +1,5 @@
+#在使用elasticsearch的时候，发现5以上好像增加了一种text和keyword的功能
+#用keyword可以方便的使用过滤聚合等操作，text适用于分词之类
+#但是在这里有个坑，keyword里面有个字段是ignore_above，如果你存的字符长度超出了ignore_above所记载的字符长度
+#便查不出任何东西，在本地实验了下，增加ignore_above所代表的长度才可以精准过滤
+#另外要使用keyword需要用.keyword
