@@ -1,0 +1,12 @@
+#之前用scrapyd守护scrapy进程，总是有一些scrapy进程无故假死，就很奇怪，弄了很长时间，发现以下两个函数在进行大量的爬取作业时最好不要使用：
+import requests
+requests.get(refererurl).url#.head..etc
+#如果设置单次便中断是不会导致假死的，但是假如循环至最终的url会假死
+#无论是给requests.get或者scrapy的setting设置timeout都依然会假死，但是有一个运行在比较好的设备环境网络环境下跑了将近20天并没假死
+#猜想也可能是优化？？？
+
+import urllib2
+urllib2.urlopen(refererurl).url
+#和上面的一样
+
+#最终显示的错误是数据库连接已经断开，总之很神奇，如果要获取最终链接，最好手动写函数或者requests.get单次获取吧
