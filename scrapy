@@ -11,7 +11,8 @@ urllib2.urlopen(refererurl).url
 
 #最终显示的错误是数据库连接已经断开，总之很神奇，如果要获取最终链接，最好手动写函数或者requests.get单次获取吧
 
-
+添加代理：
+http://www.cnblogs.com/hsp-77-abc/p/6145659.html
 
 request=request.replace(url='', method='HEAD', dont_filter=True, meta={'dont_redirect': True, 'dont_obey_robotstxt': True, 'handle_httpstatus_list': (301, 302, 303, 307)})
 fetch(request)
