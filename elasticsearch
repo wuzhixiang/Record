@@ -18,3 +18,5 @@ curl -X PUT http://127.0.0.1:9200/work_2017_07_25/itern/2 -d '''{"name": "'{320,
 #遇到错误Unexpected end-of-input in VALUE_STRING\n
 #原来是"'{320, 568}'"中的'{和外面多引号加其后的{貌似冲突了，具体原因不清楚
 #最后发现dsl语句中还是因为ignore_above的问题没能搜索到，但是cygwin里面确实因为冲突，果然还是linux开发比较好点
+
+curl -X GET http://10.64.204.131:10080/_search?pretty -d '''{"query": {"bool": {"must": [{"term": { "": "" }}] } } }'''
