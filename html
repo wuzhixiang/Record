@@ -7,3 +7,23 @@ urllib.unquote(encoded_url).decode('utf-8', 'replace')
 
 
 #普通空格和nbsp; 的使用慎重,因为解码两者不同,虽然都是一个空格,但从print的长度（物理意义上）不一样
+
+
+
+
+form表单中
+具有disabled属性的字段不会被提交
+不具有name属性的字段不会被提交
+同名的name属性会发生覆盖，radio和checkbox除外
+form指向其他表单的字段，不会被本表单提交
+http://www.cnblogs.com/lewo/p/form-skill.html
+
+
+
+
+昨天写一个三级联动下拉框,用onchange改变selectedindex发现只有最初的执行生效,
+以后不管前面的下拉框怎么选后面的下拉框都不会自己改变,折腾了好久才发现
+select标签里面加了data-toggle="select",
+HTML5允许开发者自由为其标签添加属性，这种自定义属性一般用“data-”开头
+data-toggle指以什么事件触发，常用的如modal,popover,tooltips等
+把这个去掉就行了~
