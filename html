@@ -27,3 +27,12 @@ select标签里面加了data-toggle="select",
 HTML5允许开发者自由为其标签添加属性，这种自定义属性一般用“data-”开头
 data-toggle指以什么事件触发，常用的如modal,popover,tooltips等
 把这个去掉就行了~
+
+
+
+
+栅格系统中的列是通过指定1到12的值来表示其跨越的范围 所以不会有col-**-15 最大也就是12
+<div class="col-sm-10 col-md-8"> 
+这个应该是说:
+屏幕大于(≥992px) ，使用col-md-* 而不是col-sm-*
+如果屏幕大于(≥768px)，<=992px，使用col-sm-* 而不是col-md-*
