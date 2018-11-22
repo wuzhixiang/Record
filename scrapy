@@ -10,8 +10,14 @@
   #和上面的一样会假死
   #最终显示的错误是数据库连接已经断开，总之很神奇，如果要获取最终链接，最好手动写函数或者requests.get单次获取吧
 2.代理
-  #添加代理：   http://www.cnblogs.com/hsp-77-abc/p/6145659.html
+  #添加代理：
+  无认证：
+  Request(url, callback=self.parse, meta={'proxy': 'http://ip:port'})
+  http://www.cnblogs.com/hsp-77-abc/p/6145659.html
 3.方便的调试
   #命令行调试用
+  scrapy shell url
+  ...
   request=request.replace(url='', method='HEAD', dont_filter=True, meta={'dont_redirect': True, 'dont_obey_robotstxt': True, 'handle_httpstatus_list': (301, 302, 303, 307)})
   fetch(request)
+  ...
