@@ -1,0 +1,5 @@
+ImportError: No module named django.core.wsgi
+centos 7 python 2.7 没有使用virtualenv
+
+sys.path.append('/usr/lib/python2.7/site-packages')
+sys.path.append('/usr/lib64/python2.7/site-packages')
