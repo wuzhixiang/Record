@@ -1,8 +1,11 @@
-1.a标签中href编解码问题
-  <!--在a标签里面用href跳转的时候，貌似会自动用url编码编码链接
-  而传过去后好像会自动帮你解码，好像是做了-->
-  urllib.unquote(encoded_url).decode('utf-8', 'replace')
-  <!--这样的工作-->
+1.编解码
+  python2 
+  urllib.unquote()
+  urllib.quote()
+  python3
+  from urlib import parse
+  parse.unquote()
+  parse.quote()
 2.空格
   <!--普通空格和nbsp; 的使用慎重,因为解码两者不同,虽然都是空格,但print的长度不一样-->
 3.form表单
